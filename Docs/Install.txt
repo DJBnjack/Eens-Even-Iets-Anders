@@ -1,0 +1,4 @@
+Visual Studio Code: https://code.visualstudio.com/Download
+Source Tree: https://www.sourcetreeapp.com/
+Python: https://www.python.org/downloads/release/python-343/
+
