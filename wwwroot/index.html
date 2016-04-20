@@ -1,6 +1,6 @@
 <html>
-    <body>
-        <h1>Hello from INDEX</h1>
+    <head>
+        <script src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
         <script>
             var loc = window.location, new_uri;
             if (loc.protocol === "https:") {
@@ -13,12 +13,27 @@
             var ws = new WebSocket(new_uri);
             
             ws.onopen = function() {
-                ws.send("Hello, world");
+                //ws.send("Hello, world");
             };
             
             ws.onmessage = function (evt) {
                 alert(evt.data);
             };
+            
+            $(document).ready(function() {
+                $("#inlog").click(function() {
+                    var inlogNaam = $("#naam").val();
+                    ws.send(inlogNaam);
+                })
+            });
+            
         </script>
+    </head>
+    <body>
+        <h1>Hello from INDEX</h1>
+            <input id="naam" value="Votre nome ICI" />
+            <button id="inlog">Inloggen</button>
+            
+        
     </body>
 </html>
