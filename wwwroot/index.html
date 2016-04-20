@@ -2,7 +2,15 @@
     <body>
         <h1>Hello from INDEX</h1>
         <script>
-            var ws = new WebSocket("ws://localhost:8888/websocket");
+            var loc = window.location, new_uri;
+            if (loc.protocol === "https:") {
+                new_uri = "wss:";
+            } else {
+                new_uri = "ws:";
+            }
+            new_uri += "//" + loc.host;
+            new_uri += "/websocket";
+            var ws = new WebSocket(new_uri);
             
             ws.onopen = function() {
                 ws.send("Hello, world");
