@@ -1,39 +1,25 @@
 <html>
     <head>
         <script src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
-        <script>
-            var loc = window.location, new_uri;
-            if (loc.protocol === "https:") {
-                new_uri = "wss:";
-            } else {
-                new_uri = "ws:";
-            }
-            new_uri += "//" + loc.host;
-            new_uri += "/websocket";
-            var ws = new WebSocket(new_uri);
-            
-            ws.onopen = function() {
-                //ws.send("Hello, world");
-            };
-            
-            ws.onmessage = function (evt) {
-                alert(evt.data);
-            };
-            
-            $(document).ready(function() {
-                $("#inlog").click(function() {
-                    var inlogNaam = $("#naam").val();
-                    ws.send(inlogNaam);
-                })
-            });
-            
-        </script>
+        <script src="js/yapp.js"></script>
     </head>
     <body>
-        <h1>Hello from INDEX</h1>
-            <input id="naam" value="Votre nome ICI" />
+        <div id="login">
+            <h1>Hello from YAPP, please log in:</h1>
+            <input id="naam" placeholder="Enter your name please" />
             <button id="inlog">Inloggen</button>
-            
+        </div>
+
+        <div id="room" style="display: none;">
+            <h1>Welcome to room UNDEFINED</h1>
+            <p>Current members:</p>
+            <ul id="members">
+            </ul>
+        </div>
         
+        <div id="debug">
+            <p>Debug log:</p>
+            <pre id="log"></pre>
+        </div>
     </body>
 </html>
